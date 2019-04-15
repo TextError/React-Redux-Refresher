@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
+        <div className="App mt-5 pt-5">
           <ParentComponent />
           <ChildComponent />
         </div>

@@ -14,6 +14,6 @@ class ParentComponent extends Component {
       </div>
     )
   }
-};
+}
 
 export default  ParentComponent;

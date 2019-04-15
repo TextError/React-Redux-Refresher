@@ -5,7 +5,27 @@ import { connect } from 'react-redux';
 import { setIncrement } from '../Redux/actions/increment';
 
 class ChildComponent extends Component {
+  constructor() {
+    super();
+    this.state = {
+      increment: 0
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { increment } = this.state;
+    if (prevState.increment !== increment) {
+      this.props.setIncrement(increment)
+    }
+  }
+  
+  onClick = () => {
+    const { increment } = this.state;
+    this.setState({ increment: increment + 1 });
+  }
+  
   render() {
+    console.log(this.state.increment)
     return (
       <div className='child mt-5'>
         <div className='row'>
@@ -20,7 +40,7 @@ class ChildComponent extends Component {
             <div className='m-auto'>
               <button 
                 className='btn btn-success mt-3'
-                onClick={this.props.setIncrement}
+                onClick={this.onClick}
               >
                 Click me!
               </button>
@@ -32,8 +52,8 @@ class ChildComponent extends Component {
   }
 };
 
-const mapStateToProps = state => {
-  
-}
+const mapStateToProps = state => ({
+
+})
 
 export default connect(mapStateToProps, { setIncrement })(ChildComponent);

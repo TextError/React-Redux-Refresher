@@ -5,12 +5,21 @@ import { connect } from 'react-redux';
 import { setIncrement } from '../Redux/actions/increment';
 
 class ChildComponent extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      increment: 0
+      increment: null
     }
   }
+
+  static getDerivedStateFromProps(nextProps, prevState){
+    const { increment } = prevState;
+
+    if( increment !== prevState.increment  ) {
+      return { increment };
+    }
+    else return null;
+ }
 
   componentDidUpdate(prevProps, prevState) {
     const { increment } = this.state;
@@ -53,7 +62,7 @@ class ChildComponent extends Component {
 };
 
 const mapStateToProps = state => ({
-
+  increment: state.increment
 })
 
 export default connect(mapStateToProps, { setIncrement })(ChildComponent);

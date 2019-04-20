@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 // Components
-import ParentComponent from './components/ParentComponent';
-import ChildComponent from './components/ChildComponent';
+import Root from './components/Root';
 
 // Redux
 import store from './store';
@@ -15,9 +14,8 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App mt-5 pt-5">
-          <ParentComponent />
-          <ChildComponent />
+        <div className="App">
+          <Root />
         </div>
       </Provider>
     );

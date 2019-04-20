@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
-import { setIncrement } from '../Redux/actions/increment';
+import { setIncrement } from '../../Redux/actions/increment';
 
 class ChildComponent extends Component {
   constructor(props) {

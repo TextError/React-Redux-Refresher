@@ -1,8 +1,13 @@
-import { GET_INCREMENT } from './types';
+import { GET_INCREMENT, GET_RESET } from './types';
 
-export const setIncrement = data => {
+export const setIncrement = () => {
   return {
     type: GET_INCREMENT,
-    payload: data
   };
 };
+
+export const setReset = () => {
+  return {
+    type: GET_RESET,
+  }
+}

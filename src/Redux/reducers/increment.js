@@ -1,4 +1,4 @@
-import { GET_INCREMENT } from '../actions/types';
+import { GET_INCREMENT, GET_RESET } from '../actions/types';
 
 const initialState = {
   increment: 0
@@ -9,7 +9,12 @@ export default function(state=initialState, action) {
     case GET_INCREMENT:
       return {
         ...state,
-        increment: action.payload
+        increment: state.increment + 1
+      }
+    case GET_RESET:
+      return {
+        ...state,
+        increment: 0
       }
     default:
       return state

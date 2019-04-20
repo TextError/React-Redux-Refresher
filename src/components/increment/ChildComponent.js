@@ -2,41 +2,34 @@ import React, { Component } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
-import { setIncrement } from '../../Redux/actions/increment';
+import { setIncrement, setReset } from '../../Redux/actions/increment';
 
 class ChildComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      increment: null
-    }
+    this.state = {}
   }
 
   static getDerivedStateFromProps(nextProps, prevState){
-    const { increment } = prevState;
-
-    if( increment !== prevState.increment  ) {
+    const { increment } = nextProps;
+    
+    if( increment !== prevState.increment ) {
       return { increment };
     }
     else return null;
  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { increment } = this.state;
-    if (prevState.increment !== increment) {
-      this.props.setIncrement(increment)
-    }
-  }
   
   onClick = () => {
-    const { increment } = this.state;
-    this.setState({ increment: increment + 1 });
+    this.props.setIncrement()
+  }
+
+  onReset = () => {
+    this.props.setReset();
   }
   
   render() {
-    console.log(this.state.increment)
     return (
-      <div className='child mt-5'>
+      <div className='child mt-3'>
         <div className='row'>
           <div className='col text-center d-flex'>
             <div className='child-title m-auto'>
@@ -53,6 +46,12 @@ class ChildComponent extends Component {
               >
                 Click me!
               </button>
+              <button
+                className='btn btn-danger mt-3 ml-3'
+                onClick={this.onReset}
+              >
+                Reset
+              </button>
             </div>
           </div>
         </div>
@@ -65,4 +64,4 @@ const mapStateToProps = state => ({
   increment: state.increment
 })
 
-export default connect(mapStateToProps, { setIncrement })(ChildComponent);
+export default connect(mapStateToProps, { setIncrement, setReset })(ChildComponent);

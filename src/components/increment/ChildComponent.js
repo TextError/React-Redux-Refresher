@@ -29,10 +29,10 @@ class ChildComponent extends Component {
   
   render() {
     return (
-      <div className='child mt-3'>
+      <div className='increment-child mt-3'>
         <div className='row'>
           <div className='col text-center d-flex'>
-            <div className='child-title m-auto'>
+            <div className='increment-child-title m-auto'>
               <h5>Child -- Component</h5>
             </div>
           </div>

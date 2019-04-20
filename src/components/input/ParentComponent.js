@@ -1,7 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+// Redux
+import { connect } from 'react-redux';
 
 class ParentComponent extends Component {
   render() {
+    const { input } = this.props.input;
     return (
       <div className='input-parent'>
         <div className='row'>
@@ -13,8 +17,8 @@ class ParentComponent extends Component {
         </div>
         <div className='row'>
           <div className='col mt-3 d-flex'>
-            <div className='m-auto'>
-              
+            <div className='m-auto text-center'>
+              <p>{input}</p>
             </div>
           </div>
         </div>
@@ -23,4 +27,8 @@ class ParentComponent extends Component {
   }
 }
 
-export default ParentComponent;
+const mapStateToProps = state => ({
+  input: state.input
+});
+
+export default connect(mapStateToProps, {})(ParentComponent);
